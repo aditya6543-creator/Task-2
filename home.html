@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to BlogSpace</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            overflow: hidden;
+        }
+        
+        .welcome-container {
+            text-align: center;
+            z-index: 10;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-in-out;
+        }
+        
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            animation: fadeIn 2.5s ease-in-out;
+        }
+        
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            animation: fadeIn 3s ease-in-out;
+        }
+        
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .btn-primary {
+            background: white;
+            color: #6e8efb;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            animation: float 15s infinite linear;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            50% { opacity: 0.3; }
+            100% { transform: translateY(-1000px) rotate(720deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background bubbles -->
+    <div class="bubble" style="width: 100px; height: 100px; left: 10%; bottom: -100px; animation-delay: 0s;"></div>
+    <div class="bubble" style="width: 150px; height: 150px; left: 20%; bottom: -150px; animation-delay: 2s;"></div>
+    <div class="bubble" style="width: 80px; height: 80px; left: 50%; bottom: -80px; animation-delay: 4s;"></div>
+    <div class="bubble" style="width: 120px; height: 120px; left: 70%; bottom: -120px; animation-delay: 6s;"></div>
+    <div class="bubble" style="width: 90px; height: 90px; left: 30%; bottom: -90px; animation-delay: 8s;"></div>
+    
+    <div class="welcome-container">
+        <h1>Welcome to BlogSpace</h1>
+        <p>Share your thoughts with the world</p>
+        <div class="btn-container">
+            <a href="login.php" class="btn btn-primary">Login</a>
+            <a href="register.php" class="btn btn-outline">Register</a>
+        </div>
+    </div>
+
+    <script>
+        // Create more bubbles dynamically
+        document.addEventListener('DOMContentLoaded', function() {
+            const body = document.querySelector('body');
+            for (let i = 0; i < 10; i++) {
+                const bubble = document.createElement('div');
+                const size = Math.random() * 100 + 50;
+                const pos = Math.random() * 100;
+                const delay = Math.random() * 10;
+                const duration = Math.random() * 20 + 10;
+                
+                bubble.className = 'bubble';
+                bubble.style.width = `${size}px`;
+                bubble.style.height = `${size}px`;
+                bubble.style.left = `${pos}%`;
+                bubble.style.bottom = `-${size}px`;
+                bubble.style.animationDelay = `${delay}s`;
+                bubble.style.animationDuration = `${duration}s`;
+                
+                body.appendChild(bubble);
+            }
+        });
+    </script>
+</body>
+</html>
